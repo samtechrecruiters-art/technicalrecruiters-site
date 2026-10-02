@@ -38,6 +38,7 @@
   --accent:#E8968E; --accent-ink:#100E0D; --accent-soft:#3A2321; --signal:#34D399; color-scheme:dark}
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
@@ -132,13 +133,8 @@ details[open] summary::after{transform:rotate(45deg)}
 details p{padding:0 0 20px;color:var(--muted);max-width:68ch}
 
 /* contact */
-.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,5vw,64px);align-items:start}
+.forms{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 form{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,3vw,32px);display:grid;gap:16px;min-width:0}
-.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px}
-.seg input{position:absolute;opacity:0;pointer-events:none}
-.seg label{text-align:center;padding:9px 12px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;color:var(--muted)}
-.seg input:checked+label{background:var(--accent);color:var(--accent-ink)}
-.seg input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .field{display:grid;gap:6px;min-width:0}
 .field label{font-size:14px;font-weight:500}
@@ -149,7 +145,10 @@ form{background:var(--surface);border:1px solid var(--line);border-radius:16px;p
 .status{font-size:14px;font-weight:500}
 .status.ok{color:var(--signal)}.status.err{color:#D14343}
 .hp{position:absolute;left:-9999px}
-@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.form-head{display:grid;gap:6px;margin-bottom:4px}
+.lead-form{scroll-margin-top:84px}
+a.inline{color:var(--accent);font-weight:600}
+@media (max-width:760px){.forms{grid-template-columns:1fr}}
 @media (max-width:520px){.row{grid-template-columns:1fr}}
 .direct{display:grid;gap:6px;margin-top:24px;font-size:15px;color:var(--muted)}
 .direct a{color:var(--ink);font-weight:600}
@@ -180,8 +179,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <h1>Top 5% talent drives <em>innovation.</em></h1>
       <p class="lede">We place exceptional operators and engineers at high-growth startups backed by leading investors, from seed through Series C. Quality first, and fast.</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="#contact" data-path="candidate">I'm exploring roles</a>
-        <a class="btn btn-ghost" href="#contact" data-path="company">I'm hiring</a>
+        <a class="btn btn-primary" href="#candidate-form">I'm exploring roles</a>
+        <a class="btn btn-ghost" href="#company-form">I'm hiring</a>
       </div>
       <p class="cities" aria-label="Markets"><span>San Francisco</span><span>New York</span><span>Seattle</span><span>Los Angeles</span><span>Austin</span></p>
     </div>
@@ -211,7 +210,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <li>A straight read on fit before you spend time interviewing</li>
           <li>Always free for you</li>
         </ul>
-        <a class="btn btn-primary" href="#contact" data-path="candidate">Share your background</a>
+        <a class="btn btn-primary" href="#candidate-form">Share your background</a>
       </article>
       <article class="path" id="companies">
         <p class="eyebrow">For companies</p>
@@ -222,7 +221,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <li>Rapid, quality-first placement</li>
           <li>Built for seed through Series C teams</li>
         </ul>
-        <a class="btn btn-ghost" href="#contact" data-path="company">Tell us about the role</a>
+        <a class="btn btn-ghost" href="#company-form">Tell us about the role</a>
       </article>
     </div>
   </section>
@@ -287,38 +286,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </section>
 
   <section id="contact" style="padding-top:0">
-    <div class="wrap contact">
-      <div class="sec-head" style="margin:0">
+    <div class="wrap">
+      <div class="sec-head">
         <p class="eyebrow">Get in touch</p>
         <h2>Tell us what you're looking for</h2>
-        <p class="lede">We read every submission and reply if there's a fit.</p>
-        <div class="direct">Prefer email?<span><a href="mailto:sam@technicalrecruiters.biz">sam@technicalrecruiters.biz</a></span></div>
+        <p class="lede">We read every submission and reply if there's a fit. Prefer email? <a class="inline" href="mailto:sam@technicalrecruiters.biz">sam@technicalrecruiters.biz</a></p>
       </div>
-
-      <form id="lead" novalidate>
-        <div class="seg" role="radiogroup" aria-label="I am">
-          <input type="radio" name="type" id="t-cand" value="Candidate" checked><label for="t-cand">I'm a candidate</label>
-          <input type="radio" name="type" id="t-co" value="Company"><label for="t-co">I'm hiring</label>
-        </div>
-        <div class="row">
-          <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-        </div>
-        <div class="field" data-for="Candidate"><label for="f-li">LinkedIn URL</label><input id="f-li" name="linkedin" type="url" placeholder="linkedin.com/in/yourname" inputmode="url"></div>
-        <div class="row" data-for="Company" hidden>
-          <div class="field"><label for="f-co">Company</label><input id="f-co" name="company" autocomplete="organization"></div>
-          <div class="field"><label for="f-role">Role you're hiring for</label><input id="f-role" name="role_hiring"></div>
-        </div>
-        <div class="field" data-for="Candidate"><label for="f-int">Roles you're interested in</label>
-          <select id="f-int" name="interest">
-            <option>Founding BizOps / Strategy</option><option>Chief of Staff</option><option>Forward Deployed / Deployment</option><option>Implementation</option><option>GTM / Growth</option><option>Software Engineering</option><option>Not sure yet</option>
-          </select></div>
-        <div class="field"><label for="f-msg">Anything else?</label><textarea id="f-msg" name="message" placeholder="Location, timing, comp range, what a great next step looks like"></textarea></div>
-        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-primary" type="submit">Send</button>
-        <p class="status" id="status" role="status" aria-live="polite"></p>
-        <p class="form-note">Your details go only to Technical Recruiters.</p>
-      </form>
+      <div class="forms">
+        <form id="candidate-form" class="lead-form" data-type="Candidate" novalidate>
+          <div class="form-head"><p class="eyebrow">For candidates</p><h3>Explore roles</h3><p class="form-note">Free for candidates, always.</p></div>
+          <div class="field"><label for="c-name">Full name</label><input id="c-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="c-li">LinkedIn URL</label><input id="c-li" name="linkedin" type="url" placeholder="linkedin.com/in/yourname" inputmode="url"></div>
+          <div class="field"><label for="c-int">Roles you're interested in</label>
+            <select id="c-int" name="interest">
+              <option>Founding BizOps / Strategy</option><option>Chief of Staff</option><option>Forward Deployed / Deployment</option><option>Implementation</option><option>GTM / Growth</option><option>Software Engineering</option><option>Not sure yet</option>
+            </select></div>
+          <div class="field"><label for="c-msg">Anything else?</label><textarea id="c-msg" name="message" placeholder="Location, timing, comp range, what a great next step looks like"></textarea></div>
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit">Send</button>
+          <p class="status" role="status" aria-live="polite"></p>
+        </form>
+        <form id="company-form" class="lead-form" data-type="Company" novalidate>
+          <div class="form-head"><p class="eyebrow">For companies</p><h3>Hire with us</h3><p class="form-note">Seed through Series C teams.</p></div>
+          <div class="field"><label for="k-name">Full name</label><input id="k-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="k-email">Work email</label><input id="k-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="k-co">Company</label><input id="k-co" name="company" autocomplete="organization"></div>
+          <div class="field"><label for="k-role">Role you're hiring for</label><input id="k-role" name="role_hiring" placeholder="e.g. Founding BizOps, SF"></div>
+          <div class="field"><label for="k-msg">Anything else?</label><textarea id="k-msg" name="message" placeholder="Stage, team size, timeline, comp range"></textarea></div>
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit">Send</button>
+          <p class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </div>
   </section>
 </main>
@@ -330,36 +330,27 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <script>
 (function(){
   var FORM_ENDPOINT = "https://formsubmit.co/ajax/sam@technicalrecruiters.biz";
-  var form = document.getElementById("lead"), status = document.getElementById("status");
   document.getElementById("yr").textContent = new Date().getFullYear();
-
-  function setPath(v){
-    document.getElementById(v === "Company" ? "t-co" : "t-cand").checked = true;
-    form.querySelectorAll("[data-for]").forEach(function(el){ el.hidden = el.getAttribute("data-for") !== v; });
-  }
-  form.querySelectorAll('input[name="type"]').forEach(function(r){ r.addEventListener("change", function(){ setPath(r.value); }); });
-  document.querySelectorAll("[data-path]").forEach(function(a){
-    a.addEventListener("click", function(){ setPath(a.getAttribute("data-path") === "company" ? "Company" : "Candidate"); });
-  });
-
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var name = form.name.value.trim(), email = form.email.value.trim();
-    if(!name || !/^\S+@\S+\.\S+$/.test(email)){
-      status.className = "status err"; status.textContent = "Add your name and a valid email so we can reply."; return;
-    }
-    var data = new FormData(form), type = data.get("type"), payload = {};
-    form.querySelectorAll("[data-for][hidden] input, [data-for][hidden] select").forEach(function(el){ data.delete(el.name); });
-    data.forEach(function(v,k){ payload[k] = v; });
-    payload._subject = (type === "Company" ? "[Website] COMPANY inquiry: " : "[Website] Candidate inquiry: ") + name;
-    payload._autoresponse = type === "Company" ? "Thanks for reaching out to Technical Recruiters! We got your note about the role and will reply within one business day. Sam Kwak, sam@technicalrecruiters.biz" : "Thanks for reaching out to Technical Recruiters! We review every submission and will be in touch if there is a fit. Sam Kwak, sam@technicalrecruiters.biz";
-    payload._template = "table";
-    var btn = form.querySelector("button"); btn.disabled = true; btn.textContent = "Sending...";
-    fetch(FORM_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify(payload)})
-      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-      .then(function(){ form.reset(); setPath("Candidate"); status.className = "status ok"; status.textContent = "Sent. We'll be in touch if there's a fit."; })
-      .catch(function(){ status.className = "status err"; status.textContent = "That didn't go through. Email sam@technicalrecruiters.biz instead."; })
-      .finally(function(){ btn.disabled = false; btn.textContent = "Send"; });
+  document.querySelectorAll(".lead-form").forEach(function(form){
+    var status = form.querySelector(".status"), type = form.getAttribute("data-type");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var name = form.name.value.trim(), email = form.email.value.trim();
+      if(!name || !/^\S+@\S+\.\S+$/.test(email)){
+        status.className = "status err"; status.textContent = "Add your name and a valid email so we can reply."; return;
+      }
+      var payload = { type: type };
+      new FormData(form).forEach(function(v,k){ payload[k] = v; });
+      payload._subject = (type === "Company" ? "[Website] COMPANY inquiry: " : "[Website] Candidate inquiry: ") + name;
+      payload._autoresponse = type === "Company" ? "Thanks for reaching out to Technical Recruiters! We got your note about the role and will reply within one business day. Sam Kwak, sam@technicalrecruiters.biz" : "Thanks for reaching out to Technical Recruiters! We review every submission and will be in touch if there is a fit. Sam Kwak, sam@technicalrecruiters.biz";
+      payload._template = "table";
+      var btn = form.querySelector("button"); btn.disabled = true; btn.textContent = "Sending...";
+      fetch(FORM_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify(payload)})
+        .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+        .then(function(){ form.reset(); status.className = "status ok"; status.textContent = "Sent. We'll be in touch if there's a fit."; })
+        .catch(function(){ status.className = "status err"; status.textContent = "That didn't go through. Email sam@technicalrecruiters.biz instead."; })
+        .finally(function(){ btn.disabled = false; btn.textContent = "Send"; });
+    });
   });
 })();
 </script>
