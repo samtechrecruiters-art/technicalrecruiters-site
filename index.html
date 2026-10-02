@@ -3,11 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Technical Recruiters</title>
-<meta name="description" content="Technical Recruiters places the top 5% of operators and engineers at venture-backed AI startups: BizOps, Chief of Staff, forward deployed, GTM and engineering roles.">
+<title>Technical Recruiters | BizOps, Chief of Staff &amp; FDE Hiring for AI Startups</title>
+<meta name="description" content="Recruiting for seed to Series C AI startups: BizOps, Chief of Staff, forward deployed and GTM talent in SF, NYC, Seattle, LA and Austin. Free for candidates.">
+<link rel="canonical" href="https://technicalrecruiters.biz/">
 <meta property="og:title" content="Technical Recruiters">
 <meta property="og:description" content="Top 5% talent for venture-backed AI startups. Free for candidates.">
-<meta property="og:url" content="https://technicalrecruiters.biz">
+<meta property="og:url" content="https://technicalrecruiters.biz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Technical Recruiters">
+<meta property="og:image" content="https://technicalrecruiters.biz/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "EmploymentAgency", "name": "Technical Recruiters LLC", "url": "https://technicalrecruiters.biz/", "logo": "https://technicalrecruiters.biz/og-image.png", "email": "sam@technicalrecruiters.biz", "description": "Recruiting agency placing BizOps, Chief of Staff, forward deployed, GTM and engineering talent at venture-backed AI startups.", "areaServed": ["San Francisco", "New York", "Seattle", "Los Angeles", "Austin"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this free for candidates?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Candidates never pay anything. Our fees are paid by the hiring company."}}, {"@type": "Question", "name": "What kinds of roles do you focus on?", "acceptedAnswer": {"@type": "Answer", "text": "Founding BizOps, Chief of Staff, forward deployed and deployment roles, implementation, GTM and growth, and software engineering at AI and venture-backed startups."}}, {"@type": "Question", "name": "What stage are the companies?", "acceptedAnswer": {"@type": "Answer", "text": "Mostly seed through Series C startups backed by leading investors."}}, {"@type": "Question", "name": "How long does a placement take?", "acceptedAnswer": {"@type": "Answer", "text": "Usually a matter of weeks. One Series B client sent an offer letter 24 days after our first submissions."}}, {"@type": "Question", "name": "Do you have remote or international roles?", "acceptedAnswer": {"@type": "Answer", "text": "Some, but options are limited. Most of our companies prefer candidates in or willing to relocate to the San Francisco Bay Area or New York."}}]}</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F7F5F4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -188,11 +195,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <li><div><b>GTM and Account Executive</b><small>First sellers and growth</small></div><span class="tag">Series A+</span></li>
         <li><div><b>Software Engineering</b><small>Product and infrastructure</small></div><span class="tag">All stages</span></li>
       </ol>
-      <div class="board-foot"><span>Free for candidates</span><strong>Offer in 24 days</strong></div>
+      <div class="board-foot"><span>Free for candidates</span><strong>Series B client: offer in 24 days</strong></div>
     </aside>
   </div>
 
   <section id="candidates" style="padding-top:0">
+    <div class="wrap"><div class="sec-head"><p class="eyebrow">Two ways to work with us</p><h2>Recruiting for candidates and the AI startups hiring them</h2></div></div>
     <div class="wrap paths">
       <article class="path">
         <p class="eyebrow">For candidates</p>
@@ -343,7 +351,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     var data = new FormData(form), type = data.get("type"), payload = {};
     form.querySelectorAll("[data-for][hidden] input, [data-for][hidden] select").forEach(function(el){ data.delete(el.name); });
     data.forEach(function(v,k){ payload[k] = v; });
-    payload._subject = "New " + type.toLowerCase() + " inquiry: " + name;
+    payload._subject = (type === "Company" ? "[Website] COMPANY inquiry: " : "[Website] Candidate inquiry: ") + name;
+    payload._autoresponse = type === "Company" ? "Thanks for reaching out to Technical Recruiters! We got your note about the role and will reply within one business day. Sam Kwak, sam@technicalrecruiters.biz" : "Thanks for reaching out to Technical Recruiters! We review every submission and will be in touch if there is a fit. Sam Kwak, sam@technicalrecruiters.biz";
     payload._template = "table";
     var btn = form.querySelector("button"); btn.disabled = true; btn.textContent = "Sending...";
     fetch(FORM_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify(payload)})
