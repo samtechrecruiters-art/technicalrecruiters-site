@@ -9,25 +9,26 @@
 <meta property="og:description" content="Top 5% talent for venture-backed AI startups. Free for candidates.">
 <meta property="og:url" content="https://technicalrecruiters.biz">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#F7F5F4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: one 1120px column; split hero (thesis left, live "seats" board right); quiet sections; one bold accent moment in the hero board */
 :root{
-  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#0F1730; --muted:#55607A; --line:#DDE1EA;
-  --accent:#2340D8; --accent-ink:#FFFFFF; --accent-soft:#E7EBFC; --signal:#0E9F6E;
+  --bg:#F7F5F4; --surface:#FFFFFF; --ink:#0A0A0A; --muted:#5E5856; --line:#E6E0DE;
+  --accent:#B4514A; --accent-ink:#FFFFFF; --accent-soft:#FBEAE8; --signal:#0E9F6E; --brand:#CE6F67;
   --display:"Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
   --body:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
   --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --r:10px; color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0B1020; --surface:#121933; --ink:#E9ECF5; --muted:#9AA4BF; --line:#243055;
-  --accent:#6F86FF; --accent-ink:#0B1020; --accent-soft:#1A2450; --signal:#34D399; color-scheme:dark}}
+  --bg:#100E0D; --surface:#1B1817; --ink:#F2EEEC; --muted:#A9A19E; --line:#302A28;
+  --accent:#E8968E; --accent-ink:#100E0D; --accent-soft:#3A2321; --signal:#34D399; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0B1020; --surface:#121933; --ink:#E9ECF5; --muted:#9AA4BF; --line:#243055;
-  --accent:#6F86FF; --accent-ink:#0B1020; --accent-soft:#1A2450; --signal:#34D399; color-scheme:dark}
+  --bg:#100E0D; --surface:#1B1817; --ink:#F2EEEC; --muted:#A9A19E; --line:#302A28;
+  --accent:#E8968E; --accent-ink:#100E0D; --accent-soft:#3A2321; --signal:#34D399; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -49,7 +50,7 @@ section{padding-block:clamp(56px,8vw,96px)}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 17px var(--display);letter-spacing:-.01em}
-.brand i{display:grid;place-items:center;width:28px;height:28px;border-radius:7px;background:var(--accent);color:var(--accent-ink);font:700 12px var(--body);font-style:normal}
+.brand .mark{width:30px;height:auto;color:var(--ink);flex:none}
 .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px;color:var(--muted)}
 .nav ul a{text-decoration:none}.nav ul a:hover{color:var(--ink)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding-inline:20px;border-radius:999px;font:600 15px var(--body);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
@@ -67,7 +68,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:co
 .cities{margin-top:28px;font:400 13px var(--mono);color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 14px}
 .cities span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--signal);margin-right:7px;vertical-align:1px}
 
-.board{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 60px -30px rgba(15,23,48,.35);overflow:hidden;min-width:0}
+.board{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 60px -30px rgba(10,10,10,.3);overflow:hidden;min-width:0}
 .board-top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .live{display:flex;align-items:center;gap:7px;color:var(--signal)}
 .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--signal);animation:pulse 2s infinite}
@@ -154,7 +155,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <header>
   <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="#top"><i>TR</i>Technical Recruiters</a>
+    <a class="brand" href="#top"><svg class="mark" viewBox="256 315 494 545" aria-hidden="true"><path fill="currentColor" d="M508 315H750V557H628V436H508Z"/><path fill="#CE6F67" d="M332 436H508V557H256Z"/><path fill="#CE6F67" d="M508 557H628V793L508 860Z"/></svg>Technical Recruiters</a>
     <ul>
       <li><a href="#candidates">Candidates</a></li>
       <li><a href="#companies">Companies</a></li>
