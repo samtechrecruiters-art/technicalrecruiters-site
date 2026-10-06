@@ -1,0 +1,19 @@
+{
+  "_readme": "Source of truth for /placements/. Add one object per closed hire. Never include candidate names. Set company only when the client has agreed to be named. Run python3 build/build.py after editing. Fields: role, stage, city, closed (e.g. 'Sep 2026'), time (e.g. 'Offer in 21 days'), summary, company (optional).",
+  "stats": [
+    {"value": "24", "label": "Days to offer, Series B client"},
+    {"value": "Seed to C", "label": "Stages we serve"},
+    {"value": "SF and NYC", "label": "Primary markets"},
+    {"value": "$0", "label": "Cost to candidates"}
+  ],
+  "placements": [
+    {
+      "role": "Confidential placement",
+      "stage": "Series B, YC-backed",
+      "city": "",
+      "closed": "",
+      "time": "Offer letter in 24 days",
+      "summary": "A few targeted submissions led to an accepted offer within a month of kickoff."
+    }
+  ]
+}
